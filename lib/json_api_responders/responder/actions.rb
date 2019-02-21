@@ -1,7 +1,7 @@
 module JsonApiResponders
   class Responder
     module Actions
-      ACTIONS = %w(index show create update destroy).freeze
+      ACTIONS = %w(index show create update destroy tests).freeze
 
       def respond_to_index_action
         self.status ||= :ok
@@ -9,6 +9,11 @@ module JsonApiResponders
       end
 
       def respond_to_show_action
+        self.status ||= :ok
+        render_resource
+      end
+
+      def respond_to_tests_action
         self.status ||= :ok
         render_resource
       end
